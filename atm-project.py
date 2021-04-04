@@ -3,26 +3,20 @@ from datetime import datetime
 name = input('What is your name?\n')
 allowedUsers = ['Seyi', 'Mike', 'Love']
 allowedPassword = ['passwordSeyi', 'passwordMike', 'passwordLove']
-accountBalance = None
+accountBalances = [1000, 500, 300]
 selectedOption = None
 
-def resetBalance():
-    global accountBalance
-    accountBalance = 500
-
 def printCurrentBalance():
-    global accountBalance
-    print('Your current account balance is $%d.\n' % accountBalance)
+    print('Your current account balance is $%d.\n' % accountBalances[userId])
 
 def endSession():
-    print("You have been logged out. Have a nice day.")
+    print("Thank you for using this ATM.\n"\
+    "You have been logged out. Have a nice day.")
 
 def printGreeting():
     now = datetime.now()
     date = now.strftime("%A, %B %d, %Y")
     time = now.strftime("%H:%M")
-
-    resetBalance()
 
     print('Welcome, %s! The date is %s, and the current time is %s.\n'
         % (name, date, time))
@@ -45,8 +39,17 @@ def returnToMenu():
     print("You are returning to the main menu.\n")
     useAtm()
 
+def performAnotherAction():
+    furtherAction = input("Would you like to perform another action?"\
+        " Enter 'Y' for yes, or enter any other text for no.\n")
+
+    if(furtherAction == 'Y'):
+        returnToMenu()
+    else:
+        endSession()
+
 def optionOne():
-    global accountBalance
+    global accountBalances
     printOption()
     printCurrentBalance()
     withdrawal = int(input("Enter the amount you'd like to withdraw,"\
@@ -59,20 +62,20 @@ def optionOne():
         print('You will now be returned to the main menu to try again.\n')
         useAtm()
     else:
-        if(withdrawal > accountBalance):
+        if(withdrawal > accountBalances[userId]):
             print('You cannot withdraw more than your current balance of $%d.\n'
-                % accountBalance)
+                % accountBalances[userId])
             print('You will now be returned to the main menu to try again.\n')
             useAtm()
         else:
-            newAccountBalance = accountBalance - withdrawal
-            accountBalance = newAccountBalance
+            newAccountBalance = accountBalances[userId] - withdrawal
+            accountBalances[userId] = newAccountBalance
             print("You new balance is $%d. Please take your cash.\n"
-                % accountBalance)
-            endSession()
+                % accountBalances[userId])
+            performAnotherAction()
 
 def optionTwo():
-    global accountBalance
+    global accountBalances
     printOption()
     printCurrentBalance()
     deposit = int(input("Enter the amount you'd like to deposit,"\
@@ -85,22 +88,22 @@ def optionTwo():
         print('You will now be returned to the main menu to try again.\n')
         useAtm()
     else:
-        newAccountBalance = accountBalance + deposit
-        accountBalance = newAccountBalance
+        newAccountBalance = accountBalances[userId] + deposit
+        accountBalances[userId] = newAccountBalance
         print("You new balance is $%d.\n"
-            % accountBalance)
-        endSession()
+            % accountBalances[userId])
+        performAnotherAction()
 
 def optionThree():
-    continueWithComplaint = int(input("If you'd like to submit a complaint to our Member's Services"\
-        " department, please enter '1' to continue. Otherwise, please enter"\
-        " '0' to return to the main menu.\n"))
+    continueWithComplaint = input("If you'd like to submit a complaint to our Member's Services"\
+        " department, please enter 'Y' to continue. Otherwise, please enter"\
+        " any other text to return to the main menu.\n")
 
-    if(continueWithComplaint == 1):
+    if(continueWithComplaint == 'Y'):
         complaint = input("What issue would you like to report?\n")
         print("Thank you for contacting us.\n")
-        endSession()
-    elif(continueWithComplaint == 0):
+        performAnotherAction()
+    else:
         returnToMenu()
 
 def optionFour():
