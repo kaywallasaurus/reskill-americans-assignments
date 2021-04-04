@@ -95,9 +95,9 @@ def optionTwo():
         performAnotherAction()
 
 def optionThree():
-    continueWithComplaint = input("If you'd like to submit a complaint to our Member's Services"\
-        " department, please enter 'Y' to continue. Otherwise, please enter"\
-        " any other text to return to the main menu.\n")
+    continueWithComplaint = input("If you'd like to submit a complaint to our"\
+        " Member's Services department, please enter 'Y' to continue."\
+        " Otherwise, please enter any other text to return to the main menu.\n")
 
     if(continueWithComplaint == 'Y'):
         complaint = input("What issue would you like to report?\n")
