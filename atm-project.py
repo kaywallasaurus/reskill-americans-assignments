@@ -1,3 +1,8 @@
+# ******************NOTE******************
+# this was the original submission for the initial week 3 assignment
+# for an updated and more functional version of this project, please
+# see the other file in this repo titled atm-with-auth.py
+
 from datetime import datetime
 
 name = input('What is your name?\n')
