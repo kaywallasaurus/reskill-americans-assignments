@@ -5,7 +5,7 @@
 from datetime import datetime
 import time
 import random
-import validation
+import validation  # type: ignore
 
 # variable definitions
 
