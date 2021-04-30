@@ -2,6 +2,7 @@
 # this file is the submission for the week 5 assignment: updated ATM with
 # modules for verification and file system database.
 
+from getpass import getpass
 from datetime import datetime
 import time
 import random
@@ -61,7 +62,7 @@ def register():
     first_name = input('What is your first name?\n')
     last_name = input('What is your last name?\n')
     email = input('What is you email address?\n')
-    password = input('Please enter a password for your account.\n')
+    password = getpass('Please enter a password for your account.\n')
     account_number = generate_account_number()
 
     print('This is your account number: %d.\n\n'
@@ -94,7 +95,7 @@ def login():
 
             if raw_user:
 
-                user_password = input('Password:\n')
+                user_password = getpass('Password:\n')
                 authentication = database.login_auth(raw_user, user_password)
 
                 if authentication:
