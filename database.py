@@ -2,7 +2,7 @@ import os
 
 # variables
 
-data_path = 'data/'
+data_path = 'atm-data/'
 auth_path = data_path + 'auth-session.txt'
 all_users = os.listdir(data_path)
 
