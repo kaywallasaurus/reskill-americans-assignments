@@ -61,7 +61,7 @@ def register():
 
     first_name = input('What is your first name?\n')
     last_name = input('What is your last name?\n')
-    email = input('What is you email address?\n')
+    email = input('What is your email address?\n')
     password = getpass('Please enter a password for your account.\n')
     account_number = generate_account_number()
 

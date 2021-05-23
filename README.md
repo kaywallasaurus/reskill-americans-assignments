@@ -11,3 +11,6 @@
     * See file _5-updated-atm.py_ for main ATM functions
     * Also added validation module, and _data_ folder for user documents
     * Please note: _/data/1000000000.txt_ file contains data for a test user
+* Week 6
+  * Budget app using OOP
+    * See file _6-budget-app.py_
